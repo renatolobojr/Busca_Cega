@@ -25,16 +25,16 @@ public class Busca_Cega {
 		
 		/**************fim da criação e iniciação das variáveis**************/
 		
-		do{
+		do{  //laço da busca                  
 			if(d){
 					atual = borda.get(0); borda.remove(0);		//d = true -> busca por largura
 				
 			}else 	atual = borda.pop();						//d = False -> busca por profundidade
 			
-			gerados = expandir(atual);
+			gerados = expandir(atual); //expande gerando novos estados
 			explorados.push(atual);
 			
-			do{
+			do{   //laço que testa os novos estados, excluindo os repetidos
 				if (igual(gerados.get(0),f)) achou = true;
 				
 				if ((!repete(gerados.get(0),borda))
@@ -42,6 +42,7 @@ public class Busca_Cega {
 							borda.push(gerados.get(0));
 				
 				gerados.remove(0);
+				
 			}while(!gerados.isEmpty());
 			
 			System.out.print("Explorados: ");
@@ -72,9 +73,6 @@ public class Busca_Cega {
 			temp.transicao(i);
 			lista.add(temp);
 		}
-		
-
-				
 		return lista;
 	}//fim do expandir
 	
@@ -82,7 +80,7 @@ public class Busca_Cega {
 		for(int i=0;i<L.size();i++) 
 			if (igual(G,L.get(i))) return true; 
 		return false;
-	}
+	}//fim do repete
 	
 	private static boolean igual(Garrafas G, Garrafas H){
 		
@@ -90,4 +88,5 @@ public class Busca_Cega {
 		else return false;
 		
 	}//fim do igual
-}
+
+}//fim da classe

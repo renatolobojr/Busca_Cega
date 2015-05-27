@@ -9,6 +9,7 @@ public class Garrafas {
 	public ArrayList<Integer> geradores = new ArrayList<Integer>();;
 	
 	public int id;
+	public int ger;
 	public static int registro=0;
 	
 	public Garrafas(int x, int y){
@@ -17,11 +18,12 @@ public class Garrafas {
 		this.id = registro++;
 	}
 	
-	public Garrafas(Garrafas G){
+	public Garrafas(Garrafas G){   //gerar novo estado a partir do antigo
 		this.garr3 = G.garr3;
 		this.garr4 = G.garr4;
 		this.id = registro++;
-		this.geradores.add(G.id);
+		this.ger = G.id;
+		//this.geradores.add(G.id);
 	}
 	
 	public void transicao(int i){
@@ -38,7 +40,7 @@ public class Garrafas {
 	}
 	
 	public String toString(){
-		String s = "("+ garr4 +","+ garr3 + ")["+ id +"]";
+		String s = "["+ ger +"]("+ garr4 +","+ garr3 + ")["+ id +"]";
 		return s;
 	}
 }
